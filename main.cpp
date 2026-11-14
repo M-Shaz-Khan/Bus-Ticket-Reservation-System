@@ -5,6 +5,25 @@ void printDivider() {
     cout << "=============================================================\n";
 }
 
+string toLower(string s) {
+    for (int i = 0; i < s.length(); i++) {
+        s[i] = tolower(s[i]);
+    }
+    return s;
+}
+
+bool yesNo(const string& prompt) {
+    string s;
+    while (true) {
+        cout << prompt + " (y/n): ";
+        getline (cin, s);
+        s = toLower(s);
+        if (s == "y" || s == "yes") return true;
+        if (s == "n" || s == "no") return false;
+        cout << "  Please type y or n.\n";
+    }
+}
+
 int main() {
     // constants for the Bus Seats and Types
     const int ROWS = 10;
