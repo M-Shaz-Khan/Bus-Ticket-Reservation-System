@@ -58,6 +58,20 @@ bool yesNo(const string& prompt) {
     }
 }
 
+int choiceInput(int &choice) {
+    cout << "Enter your choice: ";
+    while (true) {
+        cin >> choice;
+        if (cin.fail()) {
+            cin.clear(); // clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard invalid input
+            cout << "Invalid input. Please enter a number: ";
+        } else {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // discard any extra input
+            return choice;
+        }
+    }
+}
 
 void bookTicket() {
     ;
@@ -97,7 +111,7 @@ void PassengerMenu() {
     int choice;
     do {
         cout << "\n1. Book Ticket\n2. View Bookings\n3. Cancel Booking\n0. Logout\n";
-        choice = readInt("Enter your choice: ", 0, 3);
+        choiceInput(choice);
         switch (choice) {
             case 1: {bookTicket(); break;}
             case 2: {viewBookings(); break;}
@@ -113,7 +127,7 @@ void adminMenu() {
     int choice;
     do {
         cout << "\n1. View Users\n2. Cancel a Booking\n3. Cancel a Bus\n0. Logout\n";
-        choice = readInt("Enter your choice: ", 0, 3);
+        choiceInput(choice);
         switch (choice) {
             case 1: {viewUsers(); break;}
             case 2: {cancelBooking(); break;}
@@ -127,9 +141,9 @@ void adminMenu() {
 int main() {
     printHeading("Bus Ticket Reservation System");
     cout << "\n1. Login\n2. Register\n3. Recover Password\n0. Exit\n"; 
-    int choice;
+    int choice = -1;
     do {
-        choice = readInt("Enter your choice: ", 0, 3);
+        choiceInput(choice);
         switch (choice) {
             case 1: {login();}
             case 2: {registerUser();}
