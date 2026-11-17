@@ -1,8 +1,12 @@
 # include <iostream>
 using namespace std;
 
+// without comments, I was lost the first time i opened the project after a few days of gap between prior coding session
+// I wont make the same mistake again, it also makes searching data with naked eye easier...
+// ...even if it is obvious from reading the code. I alos make comments longer, hehe-heh :P
 
-// constants for the Bus Seats and Types
+// constants for the Bus No. of Seats, Types & Capacity
+
 const int ROWS = 10;
 const int COLS = 4;
 const int ECONOMY = 1000;
@@ -10,13 +14,13 @@ const int EXECUTIVE = 2000;
 const int BUSINESS = 3000;
 const int BUS_CAPACITY = ROWS * COLS;
 
-// Fixed Fare rates for different routes in Rupees.
+// Fixed Fare rates for cities in Rupees, & %age refund on ticket
 const int ISLAMABAD = 500;
 const int RAWALPINDI = 550;
 const int ABBOTTABAD = 750;
 const int PESHAWAR = 600;
 const int HASANABDAL = 250;
-const int REFUND_PERCENT = 80;   // % returned on cancellation 5 hours before departure
+const int REFUND_PERCENT = 80;  // % returned on cancellation 5 hours before departure
 
 // Constants for User Roles
 const int ROLE_PASSENGER = 1;
@@ -32,13 +36,14 @@ const int ST_COMPLETED = 2;
 const string USERS_FILE = "users.txt";
 const string BOOKING_FILE = "bookings.txt";
 
-
+// header printer
 void printHeading(string title) {
     cout << "=============================================================\n";
     cout << "  " << title << endl;
     cout << "=============================================================\n";
 }
 
+//convert input to lower case
 string toLower(string s) {
     for (int i = 0; i < s.length(); i++) {
         s[i] = tolower(s[i]);
@@ -46,6 +51,7 @@ string toLower(string s) {
     return s;
 }
 
+// validates yes / no input and returns boolean
 bool yesNo(const string& prompt) {
     string s;
     while (true) {
@@ -58,6 +64,7 @@ bool yesNo(const string& prompt) {
     }
 }
 
+// validates if input is a number, for error handling
 int choiceInput(int &choice) {
     cout << "Enter your choice: ";
     while (true) {
@@ -73,6 +80,7 @@ int choiceInput(int &choice) {
     }
 }
 
+// empty function placeholders for later
 void bookTicket() {
     ;
 }
@@ -105,7 +113,7 @@ void login() {
     ;
 }
 
-
+// passender Menu
 void PassengerMenu() {
     printHeading("Passenger Menu");
     int choice;
@@ -122,6 +130,7 @@ void PassengerMenu() {
     } while (choice != 0);
 }
 
+// Admin Menu
 void adminMenu() {
     printHeading("Admin Menu");
     int choice;
@@ -138,6 +147,7 @@ void adminMenu() {
     } while (choice != 0);
 }
 
+// main program
 int main() {
     printHeading("Bus Ticket Reservation System");
     cout << "\n1. Login\n2. Register\n3. Recover Password\n0. Exit\n"; 
